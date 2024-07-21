@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
   final String textButton;
-  const CustomButton({super.key, required this.textButton});
+  final Widget destination;
+  const CustomButton({super.key, required this.textButton, required this.destination});
 
   @override
   State<StatefulWidget> createState() => _CustomButton();
@@ -15,7 +16,11 @@ class _CustomButton extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return widget.destination;
+        }));
+      },
       style: FilledButton.styleFrom(
         backgroundColor: primary700,
         shape: RoundedRectangleBorder(

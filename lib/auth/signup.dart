@@ -1,91 +1,96 @@
-import 'package:dicoding_fp_bmafup/auth/signup.dart';
-import 'package:dicoding_fp_bmafup/custom/button.dart';
-import 'package:dicoding_fp_bmafup/custom/check_box.dart';
+import 'package:dicoding_fp_bmafup/style/colors.dart';
 import 'package:dicoding_fp_bmafup/style/fonts.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../custom/button.dart';
 import '../custom/text_field.dart';
-import '../style/colors.dart';
+import 'login.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textPrimary900 = displayXsSemibold.copyWith(color: primary900);
-    final TextStyle textNeutral700 = textSmRegular.copyWith(color: neutral700);
-    final TextStyle textShades100 = textSmMedium.copyWith(color: shades100);
+    final TextStyle placeholder = textSmMedium.copyWith(color: shades100);
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-                vertical: 25.0,
-                horizontal: 25.0
+              vertical: 25.0,
+              horizontal: 25.0
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("images/login_ilust.jpg"),
+                Image.asset("images/signup_illust.png"),
                 const SizedBox(height: 20.0),
                 Text(
-                  "Login",
-                  style: textPrimary900,
+                  "Sign Up",
+                  style: displayXsSemibold.copyWith(color: primary900),
                 ),
                 const SizedBox(height: 10.0),
                 Text(
-                  "Hello there, login to continue",
-                  style: textNeutral700,
+                  "Create an account to continue",
+                  style: textXsRegular.copyWith(color: neutral700)
                 ),
                 const SizedBox(height: 25.0),
                 Text(
+                  "First Name",
+                  style: placeholder
+                ),
+                const SizedBox(height: 10.0),
+                const CustomTextField(inputType: "user"),
+                const SizedBox(height: 15.0),
+                Text(
+                  "Last Name",
+                  style: placeholder
+                ),
+                const SizedBox(height: 10.0),
+                const CustomTextField(inputType: "user"),
+                const SizedBox(height: 15.0),
+                Text(
                   "Email",
-                  style: textShades100,
+                  style: placeholder
                 ),
                 const SizedBox(height: 10.0),
                 const CustomTextField(inputType: "email"),
                 const SizedBox(height: 15.0),
                 Text(
                   "Password",
-                  style: textShades100,
+                  style: placeholder
                 ),
                 const SizedBox(height: 10.0),
                 const CustomTextField(inputType: "password"),
                 const SizedBox(height: 15.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const CustomCheckBox(hintCheckBox: "Remember Me"),
-                    GestureDetector(
-                      child: Text(
-                        "Forgot Password?",
-                        style: textXxsRegular.copyWith(color: primary900)
-                      ),
-                      onTap: () {},
-                    )
-                  ],
+                Text(
+                  "Confirm Password",
+                  style: placeholder
                 ),
                 const SizedBox(height: 10.0),
-                const CustomButton(textButton: "Login",  destination: LoginPage()),
+                const CustomTextField(inputType: "password"),
+                const SizedBox(height: 25.0),
+                const CustomButton(textButton: "Sign Up",  destination: LoginPage()),
                 const SizedBox(height: 15.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
+                      "Already have an account?",
                       style: textXsRegular.copyWith(color: neutral900),
                     ),
                     const SizedBox(width: 5.0),
                     GestureDetector(
                       child: Text(
-                        "Sign Up",
+                        "Login",
                         style: textXsRegular.copyWith(color: primary900),
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return const SignUpPage();
+                          return const LoginPage();
                         }));
                       },
                     )
@@ -94,7 +99,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ),
     );
   }

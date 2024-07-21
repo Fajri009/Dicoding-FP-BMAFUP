@@ -47,14 +47,16 @@ class _CustomTextField extends State<CustomTextField> {
         return Icon(Icons.email_outlined, color: primary900);
       case "password":
         return Icon(Icons.vpn_key_outlined, color: primary900);
+      case "user":
+        return Icon(Icons.person_outline_rounded, color: primary900);
       default:
         return null;
     }
   }
-  
+
   Widget? getSuffixPasswordIcon(String inputType) {
     switch (inputType) {
-      case "password": 
+      case "password":
         return IconButton(
           icon:
             isToggleVisible
